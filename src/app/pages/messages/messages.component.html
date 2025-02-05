@@ -1,0 +1,18 @@
+<h2 class="no-padding">Send a Message</h2>
+<br />
+<button mat-raised-button (click)="openDialog()">Send a Message</button>
+
+@let messages = (messages$ | async);
+<br />
+@let isLoading = (isLoading$ | async);
+<br />
+@defer (when !isLoading) {
+<app-messages-list [messages]="messages"></app-messages-list>
+} @placeholder {
+<div class="loader-wrapper">
+  <div class="skeleton-loader"></div>
+  <div class="skeleton-loader"></div>
+  <div class="skeleton-loader"></div>
+  <div class="skeleton-loader"></div>
+</div>
+}
